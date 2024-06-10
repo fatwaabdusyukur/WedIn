@@ -1,7 +1,8 @@
-const { resolve } = require("path");
+const { resolve, dirname } = require("path");
 const { argv } = require("process");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const isProduction = argv[3] === "production";
 
@@ -23,6 +24,14 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: resolve(__dirname, "src/frontend/index.html"),
     filename: "index.html",
+  }),
+  new CopyPlugin({
+    patterns: [
+      {
+        from: resolve(__dirname, "src/frontend/assets/img/jumbotron.jpg"),
+        to: "img/jumbotron.jpg",
+      },
+    ],
   }),
 ];
 
