@@ -140,7 +140,7 @@ export default function Navbar() {
           Price
         </li>
         <li className="cursor-pointer font-semibold p-2 rounded bg-pink-400/90 hover:bg-pink-500">
-          Login/Register
+          <Link to={`/auth`}>Login/register</Link>
         </li>
       </ul>
     </nav>
