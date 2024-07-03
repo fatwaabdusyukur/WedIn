@@ -34,7 +34,7 @@ export default function Home() {
           </p>
           <div className="flex justify-center items-center flex-wrap gap-2 md:justify-evenly lg:grid lg:justify-items-center lg:grid-cols-2 xl:grid-cols-3">
             {Array.from({ length: 6 }, (_, index) => (
-              <SampleCard key={index} />
+              <SampleCard key={index} size="md:w-72 md:h-52 lg:w-96 lg:h-64" />
             ))}
           </div>
           <div className="w-full flex justify-center mt-4">

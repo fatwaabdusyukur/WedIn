@@ -244,8 +244,11 @@ export default function Price() {
           Available payment methods
         </h5>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 justify-items-center gap-3 w-[60%] mt-5">
-          {paymentIcons.map((icon) => (
-            <div className="p-5 rounded border border-shade-300 flex items-center justify-center w-24 h-16">
+          {paymentIcons.map((icon, index) => (
+            <div
+              className="p-5 rounded border border-shade-300 flex items-center justify-center w-24 h-16"
+              key={index}
+            >
               <img
                 src={`../img/icon/${icon}.svg`}
                 alt={icon}

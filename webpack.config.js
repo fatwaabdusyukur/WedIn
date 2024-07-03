@@ -52,6 +52,10 @@ const plugins = [
         to: "img/jumbotron.jpg",
       },
       {
+        from: resolve(__dirname, "src/frontend/assets/img/sunset.jpg"),
+        to: "img/sunset.jpg",
+      },
+      {
         from: resolve(__dirname, "src/frontend/assets/img/no-templates.png"),
         to: "img/no-templates.png",
       },

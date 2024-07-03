@@ -136,7 +136,7 @@ export default function Navbar() {
           <Link to={`/`}>Home</Link>
         </li>
         <li className="font-semibold cursor-pointer hover:text-yellow-300">
-          Template
+          <Link to={`/templates`}>Template</Link>
         </li>
         <li className="font-semibold cursor-pointer hover:text-yellow-300">
           <Link to={`/price`}>Price</Link>
