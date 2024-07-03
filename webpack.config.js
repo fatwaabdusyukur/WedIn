@@ -19,6 +19,26 @@ const fileExtensions = [
   "woff2",
 ];
 
+const paymentIcons = [
+  "alfamart",
+  "indomaret",
+  "bni",
+  "bca",
+  "bri",
+  "bitcoin",
+  "ovo",
+  "kredivo",
+  "paypal",
+  "mastercard",
+  "visa",
+  "qris",
+];
+
+const payments = paymentIcons.map((icon) => ({
+  from: resolve(__dirname, `src/frontend/assets/img/icons/${icon}.svg`),
+  to: `img/icon/${icon}.svg`,
+}));
+
 const plugins = [
   new CleanWebpackPlugin(),
   new HtmlWebpackPlugin({
@@ -32,9 +52,10 @@ const plugins = [
         to: "img/jumbotron.jpg",
       },
       {
-        from: resolve(__dirname, "src/frontend/assets/img/sunset.jpg"),
-        to: "img/sunset.jpg",
+        from: resolve(__dirname, "src/frontend/assets/img/no-templates.png"),
+        to: "img/no-templates.png",
       },
+      ...payments,
     ],
   }),
 ];

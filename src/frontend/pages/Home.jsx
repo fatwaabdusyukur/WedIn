@@ -7,10 +7,18 @@ import Jumbotron from "../components/jumbotron/Jumbotron";
 export default function Home() {
   return (
     <>
-      <Jumbotron />
-      <div className="py-10 px-5 bg-slate-200 flex flex-col gap-5">
+      <Jumbotron styles={{ image: "../img/jumbotron.jpg", height: 240 }}>
+        <h1 className="inline-flex flex-col text-center text-xl font-nunito font-bold text-white sm:text-3xl sm:font-extrabold">
+          Create Wedding invitation in Just
+          <span className="text-pink-400">Minute</span>
+        </h1>
+        <button className="cursor-pointer rounded bg-pink-400 p-2 font-bold text-white hover:bg-pink-500">
+          Create
+        </button>
+      </Jumbotron>
+      <div className="py-10 px-5 bg-gray-100 flex flex-col gap-5">
         <section>
-          <h2 className="text-4xl font-marcellus font-bold text-center text-slate-700 pb-4 border-4 border-dashed border-b-slate-700 mb-5">
+          <h2 className="text-4xl font-marcellus font-bold text-center text-slate-700 pb-4 border-b-4 border-dashed border-b-slate-700 mb-5">
             Our Features
           </h2>
           <div className="flex justify-center md:justify-evenly items-center flex-wrap gap-2  lg:grid lg:justify-items-center lg:grid-cols-3 xl:grid-cols-4">

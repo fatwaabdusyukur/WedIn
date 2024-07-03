@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-pink-500 to-yellow-500 h-48 flex flex-col items-center justify-center">
+    <footer className="bg-shade-600 h-48 flex flex-col items-center justify-center">
       <ul className="list-none flex items-center gap-4 px-4 py-2 border">
         <li className="cursor-pointer">
           <svg
@@ -219,7 +219,8 @@ export default function Footer() {
         &copy;Copyright 2023 - 2024.
       </p>
       <p className="text-sm font-normal italic text-white font-lumanosimo">
-        Allright Reserved. Powered by <span className="text-black">waeng.</span>
+        Allright Reserved. Powered by{" "}
+        <span className="text-pink-600">waeng.</span>
       </p>
     </footer>
   );

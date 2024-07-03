@@ -6,9 +6,11 @@ export default function Navbar() {
   const handleClick = () => setMenu(!menu);
 
   return (
-    <nav className="bg-gradient-to-r from-pink-500 to-yellow-500 px-5 py-2 sm:flex sm:items-center sm:justify-between">
+    <nav className="bg-shade-200 px-5 py-2 sm:flex sm:items-center sm:justify-between">
       <div className="flex items-center gap-2 w-full">
-        <h1 className="text-base font-bold text-white font-marcellus">Wedin</h1>
+        <h1 className="text-base font-bold text-gray-700 font-marcellus">
+          Wedin
+        </h1>
         <svg
           version="1.1"
           width="22px"
@@ -73,7 +75,7 @@ export default function Navbar() {
         </svg>
         <button
           onClick={handleClick}
-          className="sm:hidden ml-auto p-2 rounded bg-pink-400/90 text-white hover:bg-pink-500"
+          className="sm:hidden ml-auto p-2 rounded bg-pink-400/90 text-gray-700 hover:bg-pink-500"
         >
           {!menu ? (
             <svg
@@ -126,7 +128,7 @@ export default function Navbar() {
       </div>
       <ul
         className={
-          "sm:flex sm:list-none sm:items-center sm:gap-5 sm:text-white " +
+          "sm:flex sm:list-none sm:items-center sm:gap-5 sm:text-gray-700 " +
           (menu ? "flex flex-col items-center gap-3" : "hidden")
         }
       >
@@ -137,7 +139,7 @@ export default function Navbar() {
           Template
         </li>
         <li className="font-semibold cursor-pointer hover:text-yellow-300">
-          Price
+          <Link to={`/price`}>Price</Link>
         </li>
         <li className="cursor-pointer font-semibold p-2 rounded bg-pink-400/90 hover:bg-pink-500">
           <Link to={`/auth`}>Login/register</Link>
