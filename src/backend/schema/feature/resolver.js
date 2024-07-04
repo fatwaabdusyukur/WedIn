@@ -12,7 +12,7 @@ async function getFeatures() {
 async function setFeature(data) {
   try {
     const { feature, description, icon } = data;
-    const newData = Feature({
+    const newData = new Feature({
       feature,
       description,
       icon,
