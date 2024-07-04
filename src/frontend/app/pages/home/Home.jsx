@@ -1,13 +1,15 @@
 import React from "react";
-import FeatureCard from "../components/card/feature-card/FeatureCard";
-import SampleCard from "../components/card/sample-card/SampleCard";
-import FaqDropdown from "../components/dropdown/faq-dropdown/FaqDropdown";
-import Jumbotron from "../components/jumbotron/Jumbotron";
+import FeatureCard from "../../components/card/feature-card/FeatureCard";
+import SampleCard from "../../components/card/sample-card/SampleCard";
+import FaqDropdown from "../../components/dropdown/faq-dropdown/FaqDropdown";
+import Jumbotron from "../../components/jumbotron/Jumbotron";
 
 export default function Home() {
   return (
     <>
-      <Jumbotron styles={{ image: "../img/jumbotron.jpg", height: 240 }}>
+      <Jumbotron
+        styles={{ image: "/assets/img/banner/jumbotron.jpg", height: 240 }}
+      >
         <h1 className="inline-flex flex-col text-center text-xl font-nunito font-bold text-white sm:text-3xl sm:font-extrabold">
           Create Wedding invitation in Just
           <span className="text-pink-400">Minute</span>

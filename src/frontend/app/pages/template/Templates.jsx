@@ -1,8 +1,8 @@
 import React from "react";
-import SearchInput from "../components/input/search/SearchInput";
-import VerticalRadio from "../components/input/radio/VerticalRadio";
-import SampleCard from "../components/card/sample-card/SampleCard";
-import DoubleInput from "../components/input/text/DoubleInput";
+import SearchInput from "../../components/input/search/SearchInput";
+import VerticalRadio from "../../components/input/radio/VerticalRadio";
+import SampleCard from "../../components/card/sample-card/SampleCard";
+import DoubleInput from "../../components/input/text/DoubleInput";
 
 export default function Templates() {
   return (

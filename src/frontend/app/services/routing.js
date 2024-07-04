@@ -1,9 +1,9 @@
 import React from "react";
 import Layout from "../components/layout/Layout";
-import Home from "../pages/Home";
-import Auth from "../pages/Auth";
-import Price from "../pages/Price";
-import Templates from "../pages/Templates";
+import Home from "../pages/home/Home";
+import Auth from "../pages/auth/Auth";
+import Price from "../pages/price/Price";
+import Templates from "../pages/template/Templates";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([

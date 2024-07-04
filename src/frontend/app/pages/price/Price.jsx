@@ -1,22 +1,8 @@
 import React from "react";
-import PriceCard from "../components/card/price-card/PriceCard";
+import payments from "./payments.json";
+import PriceCard from "../../components/card/price-card/PriceCard";
 
 export default function Price() {
-  const paymentIcons = [
-    "alfamart",
-    "indomaret",
-    "bni",
-    "bca",
-    "bri",
-    "bitcoin",
-    "ovo",
-    "kredivo",
-    "paypal",
-    "mastercard",
-    "visa",
-    "qris",
-  ];
-
   return (
     <div className="bg-shade-100">
       <div className="py-10 px-5 md:px-10 xl:px-20">
@@ -244,16 +230,12 @@ export default function Price() {
           Available payment methods
         </h5>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 justify-items-center gap-3 w-[60%] mt-5">
-          {paymentIcons.map((icon, index) => (
+          {payments.map(({ path, name }, index) => (
             <div
               className="p-5 rounded border border-shade-300 flex items-center justify-center w-24 h-16"
               key={index}
             >
-              <img
-                src={`../img/icon/${icon}.svg`}
-                alt={icon}
-                className="w-full"
-              />
+              <img src={path} alt={name} className="w-full" />
             </div>
           ))}
         </div>

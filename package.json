@@ -4,8 +4,8 @@
   "description": "Web application for ordering digital invitations",
   "scripts": {
     "tailwind": "npx tailwindcss -i ./src/frontend/assets/css/index.css -o ./src/frontend/assets/css/style.css --watch",
-    "start": "webpack serve --mode development",
-    "build": "webpack --mode production",
+    "dev": "webpack serve --mode development --config webpack.dev.js",
+    "build": "webpack --mode production --config webpack.prod.js",
     "server": "nodemon ./src/backend/index.js"
   },
   "author": "waeng",
