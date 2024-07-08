@@ -1,0 +1,37 @@
+[
+  {
+    "path": "/assets/img/icons/homes/cost-effective.svg",
+    "background": "#FDE0EF",
+    "text": "Cost Effective",
+    "color": "#A74C7D",
+    "description": "Reduce paper use and environmental waste with digital invitations"
+  },
+  {
+    "path": "/assets/img/icons/homes/eco-friendly.svg",
+    "background": "#A74C7D",
+    "text": "Eco Friendly",
+    "color": "#FDE0EF",
+    "description": "Save on printing and postage costs with a more affordable digital solution"
+  },
+  {
+    "path": "/assets/img/icons/homes/accessible.svg",
+    "background": "#FDE0EF",
+    "text": "Accessible",
+    "color": "#A74C7D",
+    "description": "Easily accessible from anywhere, anytime, on digital devices"
+  },
+  {
+    "path": "/assets/img/icons/homes/realtime.svg",
+    "background": "#A74C7D",
+    "text": "Realtime",
+    "color": "#FDE0EF",
+    "description": "Provide real-time event updates to your guests"
+  },
+  {
+    "path": "/assets/img/icons/homes/interactive.svg",
+    "background": "#FDE0EF",
+    "text": "Interactive",
+    "color": "#A74C7D",
+    "description": "Create an interactive invitation experience with galleries, videos, and event maps"
+  }
+]

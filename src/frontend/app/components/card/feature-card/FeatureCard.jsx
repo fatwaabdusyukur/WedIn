@@ -1,20 +1,19 @@
 import React from "react";
 
-export default function FeatureCard() {
+export default function FeatureCard({ title, description, icon }) {
   return (
-    <div className="w-72 rounded shadow bg-white flex items-center cursor-pointer">
-      <div className="p-2">
-        <svg viewBox="0 0 24 24" width="42px" fill="none">
-          {/* SVG content */}
-        </svg>
+    <div className="rounded-md bg-pink-100 w-60 flex flex-col gap-y-2 p-3">
+      <div className="p-2 rounded-full bg-pink-300 w-fit">
+        <img
+          src={`/assets/img/icons/features/${icon}`}
+          alt="icon"
+          className="w-7 h-7"
+        />
       </div>
-      <div className="p-2">
-        <h4 className="text-base font-normal font-nunito">Time</h4>
-        <p className="text-sm font-light font-roboto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur,
-          quod?
-        </p>
-      </div>
+      <h1 className="text-lg font-bold mt-2 font-marcellus text-shade-600">
+        {title}
+      </h1>
+      <p className="text-pretty text-shade-500 font-light">{description}</p>
     </div>
   );
 }
