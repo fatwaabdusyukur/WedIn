@@ -1,0 +1,26 @@
+{
+  "purple": {
+    "light": "#F3E8FF",
+    "semibold": "#C084FC",
+    "bold": "#9300EA",
+    "extrabold": "#6B21A8"
+  },
+  "blue": {
+    "light": "#DBEAFE",
+    "semibold": "#00A5FA",
+    "bold": "#0063EB",
+    "extrabold": "#1E40AF"
+  },
+  "green": {
+    "light": "#DCFCE7",
+    "semibold": "#4ADE80",
+    "bold": "#16A34A",
+    "extrabold": "#166534"
+  },
+  "yellow": {
+    "light": "#FEF9C3",
+    "semibold": "#FACC15",
+    "bold": "#CA8A04",
+    "extrabold": "#854D0E"
+  }
+}

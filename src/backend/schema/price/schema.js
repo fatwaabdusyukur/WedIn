@@ -29,6 +29,14 @@ const fields = {
     type: new GraphQLList(GraphQLString),
     description: "Services offered from the package",
   },
+  description: {
+    type: GraphQLString,
+    description: "description of the package",
+  },
+  color: {
+    type: GraphQLString,
+    description: "color of the package",
+  },
 };
 
 const priceInterface = new GraphQLInterfaceType({

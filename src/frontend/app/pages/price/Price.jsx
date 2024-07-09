@@ -1,8 +1,11 @@
 import React from "react";
-import payments from "./payments.json";
+import FaqDropdown from "../../components/dropdown/faq-dropdown/FaqDropdown";
 import PriceCard from "../../components/card/price-card/PriceCard";
+import { useLoaderData } from "react-router-dom";
 
 export default function Price() {
+  const { prices, faqs } = useLoaderData();
+
   return (
     <div className="bg-shade-100">
       <div className="py-10 px-5 md:px-10 xl:px-20">
@@ -220,23 +223,27 @@ export default function Price() {
         </div>
       </div>
       <div className="mt-7 mb-5 flex flex-wrap justify-center gap-3">
-        <PriceCard color="purple" />
-        <PriceCard color="blue" />
-        <PriceCard color="green" />
-        <PriceCard color="yellow" />
+        {prices.map(({ type, price, offers, description, color }, index) => (
+          <PriceCard
+            key={index}
+            type={type}
+            price={price}
+            offers={offers}
+            description={description}
+            color={color}
+          />
+        ))}
       </div>
-      <div className="p-5 flex flex-col items-center">
-        <h5 className="text-3xl text-shade-600 font-bold text-center">
-          Available payment methods
-        </h5>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 justify-items-center gap-3 w-[60%] mt-5">
-          {payments.map(({ path, name }, index) => (
-            <div
-              className="p-5 rounded border border-shade-300 flex items-center justify-center w-24 h-16"
-              key={index}
-            >
-              <img src={path} alt={name} className="w-full" />
-            </div>
+      <div className="bg-pink-500 pb-7">
+        <div className="mb-5">
+          <h1 className="text-center text-4xl font-bold text-white pt-7 pb-3">
+            Frequently Asked Questions
+          </h1>
+          <div className="w-20 h-2 bg-blue-500 mx-auto"></div>
+        </div>
+        <div className="flex flex-col items-center gap-y-3">
+          {faqs.map(({ question, answer }, index) => (
+            <FaqDropdown key={index} title={question} content={answer} />
           ))}
         </div>
       </div>
