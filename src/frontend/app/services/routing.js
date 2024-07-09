@@ -14,6 +14,21 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: async () => {
+          try {
+            const { features } = await queryData(
+              "features",
+              "feature description icon"
+            );
+            const { faqType } = await queryData("faqType", "question answer", {
+              type: "common",
+            });
+
+            return { features, faqs: faqType };
+          } catch (error) {
+            console.error(`Error when fetching data for price page: ${error}`);
+          }
+        },
         element: <Home />,
       },
       {
@@ -32,7 +47,7 @@ export const router = createBrowserRouter([
               type: "price",
             });
 
-            return { prices: prices, faqs: faqType };
+            return { prices, faqs: faqType };
           } catch (error) {
             console.error(`Error when fetching data for price page: ${error}`);
           }

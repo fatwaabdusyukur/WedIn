@@ -1,20 +1,13 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 import FeatureCard from "../../components/card/feature-card/FeatureCard";
 import SampleCard from "../../components/card/sample-card/SampleCard";
 import FaqDropdown from "../../components/dropdown/faq-dropdown/FaqDropdown";
 import Jumbotron from "../../components/jumbotron/Jumbotron";
-import { fetchFeatures, fetchFaqs } from "./logic";
 import icons from "./icons.json";
+import { useLoaderData } from "react-router-dom";
 
 export default function Home() {
-  const { features, faqs } = useSelector((state) => state.home);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchFeatures());
-    dispatch(fetchFaqs());
-  }, [dispatch]);
+  const { features, faqs } = useLoaderData();
 
   return (
     <>

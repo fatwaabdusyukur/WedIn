@@ -7,7 +7,7 @@ export default function AuthForm() {
   const handleSwitch = (value) => setSwitch(value);
 
   return (
-    <form className="relative w-72 sm:w-96 bg-gray-100/90 rounded p-3 mx-4 sm:mx-0">
+    <form className="relative w-72 sm:w-96 bg-gray-100/90 rounded bg-cover p-3 mx-4 sm:mx-0">
       <AuthSwitch onHandleSwitch={handleSwitch} />
       <div className="mt-7 flex flex-col gap-4 ">
         {isSwitch ? (
