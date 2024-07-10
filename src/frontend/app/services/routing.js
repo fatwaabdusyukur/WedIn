@@ -4,6 +4,7 @@ import Home from "../pages/home/Home";
 import Auth from "../pages/auth/Auth";
 import Price from "../pages/price/Price";
 import Templates from "../pages/template/Templates";
+import Error from "../pages/error/Error";
 import { createBrowserRouter } from "react-router-dom";
 import { queryData } from "./fetch-data";
 
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
 
             return { features, faqs: faqType };
           } catch (error) {
-            console.error(`Error when fetching data for price page: ${error}`);
+            throw new Error(error);
           }
         },
         element: <Home />,
@@ -49,7 +50,7 @@ export const router = createBrowserRouter([
 
             return { prices, faqs: faqType };
           } catch (error) {
-            console.error(`Error when fetching data for price page: ${error}`);
+            throw new Error(error);
           }
         },
         element: <Price />,
@@ -59,5 +60,6 @@ export const router = createBrowserRouter([
         element: <Templates />,
       },
     ],
+    errorElement: <Error />,
   },
 ]);

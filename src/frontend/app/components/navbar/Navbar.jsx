@@ -8,11 +8,13 @@ export default function Navbar() {
   return (
     <nav className="bg-white px-5 py-2 sm:flex sm:items-center sm:justify-between">
       <div className="flex items-center gap-2 w-full">
-        <img
-          src="/assets/img/logos/logo.png"
-          alt="logo"
-          className="w-24 h-10"
-        />
+        <Link to="/" className="cursor-pointer">
+          <img
+            src="/assets/img/logos/logo.png"
+            alt="logo"
+            className="w-24 h-10"
+          />
+        </Link>
         <button
           onClick={handleClick}
           className="sm:hidden ml-auto p-2 rounded bg-pink-400/90 text-gray-700 hover:bg-pink-500"

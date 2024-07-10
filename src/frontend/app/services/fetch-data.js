@@ -15,7 +15,10 @@ export async function queryData(type, column, param = {}) {
     );
 
     if (!response.ok) {
-      throw new Error(`Failed to query data: ${response.status}`);
+      throw new Error({
+        status: response.status,
+        statusText: response.statusText,
+      });
     }
 
     const jsonData = await response.json();
