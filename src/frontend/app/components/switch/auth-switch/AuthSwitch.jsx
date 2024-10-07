@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSwitch } from "../../form/auth-form/logic";
 
-export default function AuthSwitch({ onHandleSwitch }) {
-  const [isChecked, setIsChecked] = useState(false);
+export default function AuthSwitch() {
+  const { page } = useSelector(state => state.authForm);
+  const dispatch = useDispatch();
 
-  const handleToggle = () => {
-    setIsChecked(!isChecked);
-    onHandleSwitch(!isChecked);
-  };
+  const handleSwitch = () => {
+    document.querySelectorAll('input').forEach(input => input.value = '')
+    dispatch(setSwitch());
+  }
 
   return (
     <div className="flex items-center justify-center absolute -top-5 left-1/4 w-1/2">
@@ -14,8 +17,8 @@ export default function AuthSwitch({ onHandleSwitch }) {
         id="switcher"
         type="checkbox"
         className="hidden"
-        onChange={() => handleToggle()}
-        checked={isChecked}
+        onChange={() => handleSwitch()}
+        checked={page}
       />
       <label
         htmlFor="switcher"
@@ -24,11 +27,11 @@ export default function AuthSwitch({ onHandleSwitch }) {
         <span
           className={
             "absolute top-1/2 left-1 -translate-y-1/2 rounded-full bg-gray-200/80 w-7 h-7 p-2 flex justify-center items-center transition-transform ease-in-out duration-300 " +
-            (isChecked ? "translate-x-[6.7rem]" : "")
+            (page ? "translate-x-[6.7rem]" : "")
           }
         >
           <span className="flex justify-center items-center w-7 h-7">
-            {isChecked ? (
+            {page ? (
               <svg viewBox="0 0 24 24" className="w-6 h-6 fill-gray-500/80">
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                 <g
@@ -62,10 +65,10 @@ export default function AuthSwitch({ onHandleSwitch }) {
         <span
           className={
             "font-bold font-marcellus text-lg text-white " +
-            (isChecked ? "mr-2" : "ml-2")
+            (page ? "mr-2" : "ml-2")
           }
         >
-          {isChecked ? "Register" : "Login"}
+          {page ? "Register" : "Login"}
         </span>
       </label>
     </div>

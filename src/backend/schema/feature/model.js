@@ -7,5 +7,5 @@ const featureSchema = new Schema({
   icon: String,
 });
 
-const Feature = mongoose.model("web_features", featureSchema);
+const Feature = mongoose.model("feature", featureSchema);
 module.exports = Feature;

@@ -7,7 +7,7 @@ export default function PriceCard({ type, price, offers, description, color }) {
   return (
     <div className="w-52 md:w-40 lg:w-56 rounded-md">
       <div
-        className="rounded p-2 flex flex-col items-center justify-between h-[15rem] md:h-[17rem] lg:h-[14rem]"
+        className="rounded p-2 flex flex-col items-center justify-between h-[17rem] md:h-[19rem] lg:h-[16rem]"
         style={{ backgroundColor: semibold }}
       >
         <h1 className="text-center font-bold text-white text-lg font-marcellus">
@@ -18,7 +18,7 @@ export default function PriceCard({ type, price, offers, description, color }) {
           <h2 className="font-bold text-4xl text-white">{price}</h2>
         </div>
         <p
-          className="text-sm font-light text-center mt-2 mb-10 font-roboto text-pretty"
+          className="text-sm font-light text-center mt-2 mb-8 font-roboto text-pretty"
           style={{ color: light }}
         >
           {description}

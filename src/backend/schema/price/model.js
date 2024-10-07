@@ -9,5 +9,5 @@ const priceSchema = new Schema({
   color: String,
 });
 
-const Price = mongoose.model("price_package", priceSchema);
+const Price = mongoose.model("price", priceSchema);
 module.exports = Price;

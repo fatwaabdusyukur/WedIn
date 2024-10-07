@@ -222,7 +222,7 @@ export default function Price() {
           </div>
         </div>
       </div>
-      <div className="mt-7 mb-5 flex flex-wrap justify-center gap-3">
+      <div className="mt-7 mb-5 flex flex-wrap justify-center">
         {prices.map(({ type, price, offers, description, color }, index) => (
           <PriceCard
             key={index}
