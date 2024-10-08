@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { sanitize } from "../../../services/sanitazion";
 import { validate } from "../../../services/validation";
+import { openAlert } from "../../alert/logic";
 
 const validationFields = ['email', 'username', 'password', 'confirmPassword'];
 
@@ -65,7 +66,7 @@ export const submitForm = (type) => (dispatch, getState) => {
                 dispatch(validateField({ field: 'password', value: passwordValidation }));
             } else {
                 dispatch(cleanValidate());
-                alert('Success');
+                dispatch(openAlert({ type: 'success', message: 'Congratulations, you have logged in successfully!' }));
             }
         } else {
             const cleanEmail = sanitize(register.email, ['trim', 'sql', 'email', 'escape']);
@@ -89,7 +90,7 @@ export const submitForm = (type) => (dispatch, getState) => {
                 });
             } else {
                 dispatch(cleanValidate());
-                alert('Success!');
+                dispatch(openAlert({ type: 'success', message: 'Congratulations, you have registered successfully!' }));
             }
 
         }

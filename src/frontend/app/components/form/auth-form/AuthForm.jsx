@@ -25,7 +25,7 @@ export default function AuthForm() {
           <>
             <TextInput attribute={AttributeInput.email} valid={valid.email} onHandleChange={(value) => dispatch(updateField({ field: 'register-email', value }))} />
             <TextInput attribute={AttributeInput.username} valid={valid.username} onHandleChange={(value) => dispatch(updateField({ field: 'register-username', value }))} />
-            <div className="flex w-full justify-evenly items-center gap-2">
+            <div className="flex w-full justify-evenly items-start gap-2">
               <TextInput attribute={AttributeInput.pw} valid={valid.password} onHandleChange={(value) => dispatch(updateField({ field: 'register-password', value }))} />
               <TextInput attribute={AttributeInput.pwConfirm} valid={valid.confirmPassword} onHandleChange={(value) => dispatch(updateField({ field: 'register-confirmPassword', value }))} />
             </div>
