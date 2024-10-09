@@ -77,7 +77,7 @@ export const submitForm = (type) => (dispatch, getState) => {
             const validations = [
                 validate(cleanEmail, ['required', 'email'], 'Email'),
                 validate(cleanUsername, ['required', 'min=3', 'max=30'], 'Username'),
-                validate(cleanPW, ['required', 'min=6', 'max=50', `match=${cleanConfirmPw}|Confirm Password`], 'Password'),
+                validate(cleanPW, ['required', 'min=8', 'max=50', 'strong', `match=${cleanConfirmPw}|Confirm Password`], 'Password'),
                 validate(cleanConfirmPw, ['required', 'min=6', 'max=50', `match=${cleanPW}|Password`], 'Confirm Password'),
             ];
 

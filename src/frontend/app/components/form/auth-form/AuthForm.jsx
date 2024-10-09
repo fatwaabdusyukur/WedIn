@@ -20,7 +20,7 @@ export default function AuthForm() {
   return (
     <div className="relative w-72 sm:w-96 bg-white rounded bg-cover p-3 mx-4 sm:mx-0">
       <AuthSwitch />
-      <div className="mt-7 flex flex-col gap-4 ">
+      <div className="mt-7 flex flex-col gap-y-7">
         {page ? (
           <>
             <TextInput attribute={AttributeInput.email} valid={valid.email} onHandleChange={(value) => dispatch(updateField({ field: 'register-email', value }))} />

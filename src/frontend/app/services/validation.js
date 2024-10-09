@@ -5,6 +5,7 @@ const validationRules = {
   email: (input) => validator.isEmail(input, { allow_underscores: true }),
   min: (input, pattern) => input.length >= parseInt(pattern),
   max: (input, pattern) => input.length <= parseInt(pattern),
+  strong: (input) => validator.isStrongPassword(input),
   match: (input, pattern, fieldName) => input === pattern,
 };
 
@@ -30,6 +31,8 @@ function validateInput(input, rule) {
         return `must be less than or equal to ${patternValue} characters!`;
       case 'match':
         return `must be the same as field ${fieldName}`;
+      case 'strong':
+        return `must be a strong password, with minimum criteria consisting of 1 uppercase, 1 symbol and a minimum number of 8 characters!`
       default:
         return `Invalid input for rule ${ruleName}!`;
     }
