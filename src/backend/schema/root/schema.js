@@ -6,6 +6,7 @@ const {
 const { priceQuery, priceMutation, priceType } = require("../price/schema");
 const { faqQuery, faqMutation, faqType } = require("../faq/schema");
 const { userQuery, userMutation, userType } = require("../user/schema");
+const { authMutation, authType } = require('../auth/schema');
 
 const { GraphQLSchema, GraphQLObjectType } = require("graphql");
 
@@ -44,6 +45,7 @@ const combinedMutationFields = {
   ...destructFields(priceMutation),
   ...destructFields(faqMutation),
   ...destructFields(userMutation),
+  ...destructFields(authMutation)
 };
 
 const query = new GraphQLObjectType({
@@ -59,7 +61,7 @@ const mutation = new GraphQLObjectType({
 const schema = new GraphQLSchema({
   query,
   mutation,
-  types: [featureType, priceType, faqType, userType],
+  types: [featureType, priceType, faqType, userType, authType],
 });
 
 module.exports = { schema };

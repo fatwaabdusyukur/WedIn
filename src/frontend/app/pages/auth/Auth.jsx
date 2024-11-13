@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AuthForm from "../../components/form/auth-form/AuthForm";
+import { useLoaderData } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCsrf } from "../../components/form/auth-form/logic";
 
 export default function Auth() {
+  const csrfToken = useLoaderData();
+  const dispatch = useDispatch();
+
+  useEffect(() => {    
+    dispatch(setCsrf(csrfToken));
+  }, [dispatch])
+
   return (
     <div className="p-5 sm:p-10 bg-slate-100 w-full h-screen">
       <div

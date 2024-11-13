@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { sanitize } from "../../../services/sanitazion";
 import { validate } from "../../../services/validation";
 import { openAlert } from "../../alert/logic";
+import { fetchPost, mutationData } from "../../../services/fetch-data";
+import { router } from '../../../services/routing';
 
 const validationFields = ['email', 'username', 'password', 'confirmPassword'];
 
@@ -10,6 +12,7 @@ const initialState = {
     register: { email: '', username: '', password: '', confirmPassword: '' },
     valid: Object.fromEntries(validationFields.map(field => [field, { status: true, message: '' }])),
     page: false,
+    csrf: ''
 };
 
 const authFormSlice = createSlice({
@@ -39,6 +42,9 @@ const authFormSlice = createSlice({
         },
         switchPage(state) {
             state.page = !state.page;
+        },
+        setCsrf:  (state, { payload }) => {
+            state.csrf = payload;
         }
     }
 });
@@ -49,8 +55,8 @@ export const setSwitch = () => (dispatch, getState) => {
     dispatch(switchPage());
 };
 
-export const submitForm = (type) => (dispatch, getState) => {
-    const { login, register } = getState().authForm;
+export const submitForm = (type) => async (dispatch, getState) => {
+    const { login, register, csrf } = getState().authForm;
 
     try {
         
@@ -66,7 +72,15 @@ export const submitForm = (type) => (dispatch, getState) => {
                 dispatch(validateField({ field: 'password', value: passwordValidation }));
             } else {
                 dispatch(cleanValidate());
-                dispatch(openAlert({ type: 'success', message: 'Congratulations, you have logged in successfully!' }));
+
+                const { status, message } = await fetchPost('login', { username: cleanUsername, password: cleanPassword }, csrf);
+                
+                if (!status) {
+                    dispatch(openAlert({ type: 'danger', message }));
+                } else {
+                    return router.navigate('/dashboard');
+                }
+
             }
         } else {
             const cleanEmail = sanitize(register.email, ['trim', 'sql', 'email', 'escape']);
@@ -89,17 +103,26 @@ export const submitForm = (type) => (dispatch, getState) => {
                     dispatch(validateField({ field, value: validation }));
                 });
             } else {
-                dispatch(cleanValidate());
-                dispatch(openAlert({ type: 'success', message: 'Congratulations, you have registered successfully!' }));
+                
+                const  { signUp } = await mutationData("signUp", { email: cleanEmail, username: cleanUsername, password: cleanPW }, "status message", csrf);
+
+                if (signUp.status) {
+                    dispatch(cleanField());
+                    document.querySelectorAll('input').forEach(input => input.value = '');
+                    dispatch(openAlert({ type: 'success', message: signUp.message }));
+                } else {
+                    dispatch(openAlert({ type: 'danger', message: signUp.message }));
+                }
+
             }
 
         }
 
-    } catch (error) {
-        console.error(`Error when submitting form: ${error}`);
+    } catch (err) {
+        console.error(err);
     }
 };
 
 
-export const { updateField, validateField, switchPage, cleanField, cleanValidate } = authFormSlice.actions;
+export const { updateField, validateField, switchPage, cleanField, cleanValidate, setCsrf } = authFormSlice.actions;
 export default authFormSlice.reducer;

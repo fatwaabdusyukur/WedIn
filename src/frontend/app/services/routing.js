@@ -6,7 +6,10 @@ import Price from "../pages/price/Price";
 import Templates from "../pages/template/Templates";
 import Error from "../pages/error/Error";
 import { createBrowserRouter } from "react-router-dom";
-import { queryData } from "./fetch-data";
+import { queryData, fetchGet } from "./fetch-data";
+import Dashboard from "../pages/dashboard/Dashboard";
+
+const errorServer = (error) =>  ({ status: error.status || 500, statusText: error.statusText || 'Something went wrong, please refresh the page!' });
 
 export const router = createBrowserRouter([
   {
@@ -27,13 +30,22 @@ export const router = createBrowserRouter([
 
             return { features, faqs: faqType };
           } catch (error) {
-            throw new Error(error);
+            throw errorServer(error);
           }
         },
         element: <Home />,
       },
       {
         path: "/auth",
+        loader:  async () => {
+          try {
+            const { csrfToken } = await fetchGet('csrf-token');
+
+            return  csrfToken;
+          } catch (error) {
+            throw errorServer(error);
+          }
+        },
         element: <Auth />,
       },
       {
@@ -50,7 +62,7 @@ export const router = createBrowserRouter([
 
             return { prices, faqs: faqType };
           } catch (error) {
-            throw new Error(error);
+            throw errorServer(error);
           }
         },
         element: <Price />,
@@ -59,7 +71,20 @@ export const router = createBrowserRouter([
         path: "/templates",
         element: <Templates />,
       },
+      {
+        path: '/dashboard',
+        loader: async() => {
+          try {
+            const { data } = await fetchGet('protected');
+
+            return data;
+          } catch (error) {
+            throw errorServer(error);
+          }
+        },
+        element: <Dashboard/>,
+      }
     ],
     errorElement: <Error />,
-  },
+  }
 ]);
