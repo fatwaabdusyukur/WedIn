@@ -1,27 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Sidebar(){
-    const [wide, setWide] = useState(false);
+export default function Sidebar({ show, onHandleShow }){
+
+    const handleShow = (event) => {
+        if(event.target.tagName === 'ASIDE') onHandleShow(!show);
+    }
 
     return(
-        <div className={`relative flex h-screen flex-col items-center overflow-hidden bg-pink-700 text-gray-400 ${wide ? 'w-40' : 'w-16'}`}>
-            <span onClick={() => setWide(!wide)} className='fixed left-14 top-[10%] rounded-r-full bg-pink-700 py-2 px-4 cursor-pointer'>
-                {wide ? (
-                    <svg  className='fill-gray-50 w-4 h-4' viewBox="0 0 1920 1920"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g fillRule="evenodd"> <path d="M1136 176.142 959.87.012-.248 960.131 959.87 1920 1136 1743.87 352.136 960.131 1136 176.142Z"></path> <path d="M1920 176.142 1743.87.012 783.752 960.131 1743.87 1920 1920 1743.87l-783.86-783.739L1920 176.142Z"></path> </g> </g></svg>
-                ) : (
-                    <svg className="fill-gray-50 w-4 h-4" viewBox="0 0 1920 1920">
-                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                        <g fillRule="evenodd">
-                            <path d="M0 176.142 176.13.012l960.12 960.119L176.13 1920 0 1743.87l783.864-783.739L0 176.142Z"></path>
-                            <path d="M784 176.142 960.13.012l960.12 960.119L960.13 1920 784 1743.87l783.86-783.739L784 176.142Z"></path>
-                        </g>
-                        </g>
-                    </svg>
-                )
-                }
-            </span>
-        </div>
+        <aside onClick={(event) => handleShow(event)} className={`fixed -left-full sm:left-0 top-0 z-[9999] h-screen w-screen bg-black/15 transition-transform duration-200 ease-in sm:relative sm:w-fit ${show ? 'translate-x-full' : ''}`}>
+            <div className='flex h-screen w-44 flex-col items-center gap-y-3 bg-[#F05A7E] md:w-48 lg:w-52'>
+                <Link to='/' className='w-full px-5 mt-7 cursor-pointer'>
+                    <img src="/assets/img/logos/logo.png" alt="Logo" className='w-full h-12 sm:h-16' />
+                </Link>
+            </div>
+        </aside>
     )
 }

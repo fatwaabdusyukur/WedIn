@@ -7,7 +7,7 @@ const { createHandler } = require("graphql-http/lib/use/express");
 const { schema } = require("../schema/root/schema");
 const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
-const signIn = require('../handler/login');
+const { signIn, signOut } = require('../handler/login');
 
 dotenv.config();
 
@@ -26,6 +26,8 @@ function main() {
   app.post('/login', csrfMiddleware, async (req, res) => await signIn(req, res));
 
   app.get('/protected', (req, res) => authMiddleware(req, res));
+
+  app.get('/logout', (req, res) => signOut(res));
 
   app.get('/csrf-token', csrfProtection, (req, res) => {
     res.json({ csrfToken: req.csrfToken() });

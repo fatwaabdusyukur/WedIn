@@ -10,4 +10,19 @@ async function signIn(req, res){
       }
 }
 
-module.exports = signIn;
+async function signOut(res) {
+  try {
+
+    res.clearCookie('access', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'Production',
+      sameSite: 'strict'
+    });
+
+    return res.status(200).send({ status: true });
+  } catch (error) {
+    return res.status(500).send({ statusText: 'Something wrong with the server!'});
+  }
+}
+
+module.exports = { signIn, signOut };

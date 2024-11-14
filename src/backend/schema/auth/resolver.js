@@ -20,7 +20,7 @@ async function login(username, password, res) {
     const tokenPayload = { username: user.username, role: user.role };
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET_KEY, { expiresIn: '3h' });
 
-    res.cookie('access', token, { httpOnly: true, secure: false, sameSite: 'strict', maxAge: 72 * 60 * 60 * 1000});
+    res.cookie('access', token, { httpOnly: true, secure: process.env.NODE_ENV === 'Production', sameSite: 'strict', maxAge: 3 * 60 * 60 * 1000});
 
     return res.status(200).send({ status: true, message: '' });
   } catch (error) {
