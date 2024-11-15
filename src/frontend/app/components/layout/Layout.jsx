@@ -18,7 +18,7 @@ export default function Layout() {
         <main>
           <Outlet />
         </main>
-        <Footer />
+        { !isDashboard && <Footer /> }
       </Provider>
     </React.StrictMode>
   );
